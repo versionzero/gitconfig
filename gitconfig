@@ -1,0 +1,73 @@
+[user]
+	name = Ben Burnett
+	email = ben.burnett@vecima.com
+[color]
+	ui = true
+	status = auto
+	branch = auto
+	diff = auto
+[merge]
+	tool = diff3
+[push]
+	default = upstream
+[alias]
+	a = add
+	aa = add --all
+	ae = add --edit
+	ai = add --interactive
+	ar = add-remove
+	amend = commit --amend -C HEAD
+	ap = add --patch
+	au = add --update
+	b = branch
+	c = commit
+	ca = commit --amend
+	cl = clone
+	changes = diff --name-status -r
+	co = checkout
+	cpc = cherry-pick
+	d = diff
+	ds = diff --staged
+	h = help
+	irb = rebase --interactive
+	l = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --decorate
+	ls-ignored = ls-files --exclude-standard --ignored --others
+	m = merge
+	mm = merge --no-ff
+	msg = commit --allow-empty -m
+	p = cherry-pick -s
+	r = remote
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbprune = "!for remote in `git remote`; do git remote prune $remote; done"
+	rbs = rebase --skip
+	rh = reset --hard
+	ru = remote update --prune
+	s = status -sb
+	sl = shortlog
+	sm = submodule
+	sma = submodule add
+	smu = submodule update --init
+	st = stash
+	stc = stash clear
+	stl = stash list
+	stp = stash pop
+	t = "!git checkout --track -b $1 ${2:-origin}/$1"
+	unadd = reset HEAD
+	ua = reset HEAD
+	undo = reset --soft HEAD^	
+	wd = diff --color-words
+	wds = diff --color-words --staged
+	b2t = "!f() { git tag -m \"$2\" $1-TAG $1  &&  git branch -D $1; }; f"
+	t2r = "!f() { git branch ${1%-TAG} $1  &&  git tag -d $1; }; f"
+	conflicts = !git ls-files -u | cut -f 2 | sort -u
+	semtag = !git tag -a $(semver tag) -m \"tagging $(semver tag)\"
+	sv = !git tag -a $(semver tag) -m \"tagging $(semver tag)\"
+[core]
+	editor = emacs
+	excludesfile = /home/benbu/.gitignore
+[pull]
+	rebase = true
+[commit]
+	template = /home/benbu/.gitmessage
